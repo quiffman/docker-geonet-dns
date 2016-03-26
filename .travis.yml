@@ -1,0 +1,25 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+script:
+  - docker build -t quay.io/geonet/geonet-dns .
+  - ./test.sh
+
+#before_deploy:
+  #- docker login --email="." --username="geonet+dockerbuild" --password="${docker_username}" quay.io
+
+#deploy:
+  #skip_cleanup: true
+  #provider: script
+  #script: ./docker-tag-and-push.sh
+  #on:
+    #branch: master
+
+notifications:
+  email: false
+
+#  vim: set ts=2 sw=2 tw=0 et:
